@@ -1,0 +1,43 @@
+<main>
+  <h1>QuickCart</h1>
+  <p class="hint">Orders of AED 100 or more earn a 10% discount.</p>
+
+  <form class="add" (submit)="$event.preventDefault(); onAdd(name.value, price.value, quantity.value)">
+    <label>Item <input #name type="text" value="Notebook" /></label>
+    <label>Unit price (AED) <input #price type="number" value="25" step="0.5" /></label>
+    <label>Quantity <input #quantity type="number" value="1" /></label>
+    <button type="submit">Add to cart</button>
+  </form>
+
+  @if (error()) {
+    <p class="error" role="alert">{{ error() }}</p>
+  }
+
+  <table>
+    <thead>
+      <tr><th>Item</th><th>Unit price</th><th>Quantity</th><th>Line total</th><th></th></tr>
+    </thead>
+    <tbody>
+      @for (item of cart.getItems(); track $index) {
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.unitPrice | number: '1.2-2' }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.lineTotal() | number: '1.2-2' }}</td>
+          <td><button type="button" (click)="onRemove(item.name)">Remove</button></td>
+        </tr>
+      } @empty {
+        <tr><td colspan="5" class="empty">The cart is empty.</td></tr>
+      }
+    </tbody>
+  </table>
+
+  <dl>
+    <dt>Units in cart</dt><dd>{{ cart.getItemCount() }}</dd>
+    <dt>Subtotal</dt><dd>AED {{ cart.getSubtotal() | number: '1.2-2' }}</dd>
+    <dt>Discount</dt><dd>AED {{ cart.getDiscount() | number: '1.2-2' }}</dd>
+    <dt class="total">Total</dt><dd class="total">AED {{ cart.getTotal() | number: '1.2-2' }}</dd>
+  </dl>
+
+  <button type="button" (click)="onClear()">Clear cart</button>
+</main>

@@ -1,0 +1,15 @@
+main { max-width: 640px; margin: 2rem auto; padding: 0 1rem; font-family: system-ui, sans-serif; color: #1f2933; }
+h1 { margin-bottom: 0.25rem; color: #c8501e; }
+.hint { margin-top: 0; color: #52606d; }
+.add { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: end; margin: 1rem 0; }
+label { display: flex; flex-direction: column; font-size: 0.85rem; gap: 0.25rem; }
+input { padding: 0.4rem; width: 9rem; }
+button { padding: 0.45rem 0.9rem; cursor: pointer; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { text-align: left; padding: 0.45rem; border-bottom: 1px solid #d9e2ec; }
+th { background: #dbe7f0; }
+.empty { color: #7b8794; text-align: center; }
+.error { color: #b42318; font-weight: 600; }
+dl { display: grid; grid-template-columns: max-content auto; gap: 0.3rem 1.5rem; }
+dd { margin: 0; }
+.total { font-weight: 700; }
